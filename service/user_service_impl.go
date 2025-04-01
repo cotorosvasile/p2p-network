@@ -3,14 +3,18 @@ package service
 import (
 	"fmt"
 	"math/big"
-	"p2p-network/repository"
+	"p2p-network/entity"
 )
 
-type UserServiceImpl struct {
-	userRepo *repository.UserRepository
+type UserRepository interface {
+	GetUserByUsername(username string) *entity.User
 }
 
-func NewUserServiceImpl(userRepo *repository.UserRepository) *UserServiceImpl {
+type UserServiceImpl struct {
+	userRepo UserRepository
+}
+
+func NewUserServiceImpl(userRepo UserRepository) *UserServiceImpl {
 	return &UserServiceImpl{
 		userRepo: userRepo,
 	}

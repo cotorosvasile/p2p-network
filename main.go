@@ -9,6 +9,7 @@ const (
 )
 
 func main() {
+
 	server := network.NewPeer(ServerPort)
 	server.StartServer()
 }

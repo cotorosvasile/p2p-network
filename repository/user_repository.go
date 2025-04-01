@@ -30,17 +30,7 @@ func (repository *UserRepository) GetUserByUsername(username string) *entity.Use
 	return entity.NewUser(0, "Default User", big.NewFloat(0.00))
 }
 
-func (repository *UserRepository) GetUserById(id int) *entity.User {
-	for _, user := range repository.users {
-		if user.GetID() == id {
-			return user
-		}
-	}
-
-	return entity.NewUser(0, "Default User", big.NewFloat(0.00))
-}
-
-func (repository *UserRepository) GetUserBalance(userID int) *big.Float {
+func (repository *UserRepository) GetUserBalanceById(userID int) *big.Float {
 	user, exists := repository.users[userID]
 	if !exists {
 		return big.NewFloat(0.00)
